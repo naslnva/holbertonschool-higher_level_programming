@@ -1,0 +1,7 @@
+MyList class tests
+
+Test MyList class inheritance from list
+Test append method
+Test print_sorted method
+Test behavior with empty list
+Test behavior with negative numbers
