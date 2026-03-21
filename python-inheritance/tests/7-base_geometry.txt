@@ -1,22 +1,61 @@
-Test BaseGeometry class
+BaseGeometry tests
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
-Test integer_validator
->>> bg.integer_validator("age", 5)
+Check instantiation
+>>> isinstance(bg, BaseGeometry)
+True
 
-Test invalid type
->>> bg.integer_validator("age", "5")
+Test area()
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+Test integer_validator valid
+>>> bg.integer_validator("age", 1)
+
+Test integer
+>>> bg.integer_validator("age", "4")
 Traceback (most recent call last):
 TypeError: age must be an integer
 
-Test invalid value
+Test zero
 >>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
 ValueError: age must be greater than 0
 
-Test area method
->>> bg.area()
+Test negative
+>>> bg.integer_validator("age", -4)
 Traceback (most recent call last):
-Exception: area() is not implemented
+ValueError: age must be greater than 0
+
+Test float
+>>> bg.integer_validator("age", 13.5)
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+Test tuple
+>>> bg.integer_validator("age", (4,))
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+Test list
+>>> bg.integer_validator("age", [3])
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+Test bool
+>>> bg.integer_validator("age", True)
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+Test set
+>>> bg.integer_validator("age", {3, 4})
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+Test None
+>>> bg.integer_validator("age", None)
+Traceback (most recent call last):
+TypeError: age must be an integer
