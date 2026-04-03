@@ -1,6 +1,10 @@
--- Create user user_0d_1 with all privileges on the MySQL server
+-- 1-create_user.sql
 
-CREATE USER IF NOT EXISTS 'user_0d_1'@'localhost'
-IDENTIFIED BY 'user_0d_1_pwd';
+-- Create user if it doesn't exist
+CREATE USER IF NOT EXISTS 'user_0d_1'@'localhost' IDENTIFIED BY 'user_0d_1_pwd';
 
+-- Grant all privileges on the server
 GRANT ALL PRIVILEGES ON *.* TO 'user_0d_1'@'localhost' WITH GRANT OPTION;
+
+-- Apply changes immediately
+FLUSH PRIVILEGES;
