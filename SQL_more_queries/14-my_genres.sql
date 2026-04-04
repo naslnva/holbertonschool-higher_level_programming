@@ -1,7 +1,12 @@
--- 14-my_genres.sql
-SELECT g.name
-FROM tv_shows s
-JOIN tv_show_genres sg ON s.id = sg.show_id
-JOIN genres g ON sg.genre_id = g.id
-WHERE s.title = 'Dexter'
-ORDER BY g.name ASC;
+-- Task 14: List all genres of the show Dexter
+-- Only one SELECT statement
+-- Results sorted ascending by genre name
+
+SELECT tv_genres.name
+FROM tv_genres
+JOIN tv_show_genres
+ON tv_genres.id = tv_show_genres.genre_id
+JOIN tv_shows
+ON tv_shows.id = tv_show_genres.show_id
+WHERE tv_shows.title = 'Dexter'
+ORDER BY tv_genres.name ASC;
