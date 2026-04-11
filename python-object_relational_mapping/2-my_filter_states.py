@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Lists states matching user input (format version - unsafe)
+Lists states that match user input
 """
 
 import MySQLdb
@@ -8,23 +8,21 @@ import sys
 
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
-
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
-        user=username,
-        passwd=password,
-        db=database,
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3],
         charset="utf8"
     )
 
     cur = db.cursor()
 
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
+    query = (
+        "SELECT * FROM states WHERE name = '{}' "
+        "ORDER BY states.id ASC".format(sys.argv[4])
+    )
 
     cur.execute(query)
 
