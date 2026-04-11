@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Lists states matching user input
+Lists states from database where name matches user input
 """
 
 import MySQLdb
@@ -21,7 +21,7 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     query = (
-        "SELECT * FROM states WHERE name = '{}' "
+        "SELECT * FROM states WHERE BINARY name = '{}' "
         "ORDER BY states.id ASC"
     ).format(sys.argv[4])
 
